@@ -13,11 +13,12 @@ import java.util.Optional;
 public class MapperService {
     public static UserVTO mapToCustomVTO(Optional<User> userData){
         UserVTO vto = new UserVTO();
-        vto.setId(userData.get().getId());
-        vto.setEmail(userData.get().getEmail());
-        vto.setFirstName(userData.get().getFirstName());
-        vto.setLastName(userData.get().getLastName());
-        vto.setMarketingConsent(userData.get().getMarketingConsent());
+        User user = userData.get();
+        vto.setId(user.getId());
+        vto.setEmail(user.getEmail());
+        vto.setFirstName(user.getFirstName());
+        vto.setLastName(user.getLastName());
+        vto.setMarketingConsent(user.getMarketingConsent());
         return vto;
     }
 }

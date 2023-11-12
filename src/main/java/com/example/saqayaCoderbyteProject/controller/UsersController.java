@@ -26,7 +26,6 @@ public class UsersController {
 
     @PostMapping("/users")
     public ResponseEntity<CustomResponse> addUser(@RequestBody User user){
-        log.info("msg1");
         User userAfterId = userService.generateUserId(user);
         User userReturned = userService.saveUser(userAfterId);
         String token= jwtService.generateToken(userReturned);
