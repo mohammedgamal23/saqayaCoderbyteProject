@@ -1,13 +1,15 @@
 package com.example.saqayaCoderbyteProject.config;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SHA1HashGenerator {
-
+    @Value("${our.salt}")
+    private static String salt;
     public static String generateHash(String email) {
-        String salt = "450d0b0db2bcf4adde5032eca1a7c416e560cf44";
 
         try {
             // Concatenate the email and salt

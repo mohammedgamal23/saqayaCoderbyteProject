@@ -1,6 +1,7 @@
 package com.example.saqayaCoderbyteProject.config;
 
 
+import com.example.saqayaCoderbyteProject.auth.JwtAuthinticationFilter;
 import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final AuthenticationProvider authenticationProvider;
+    private final JwtAuthinticationFilter jwtAuthinticationFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
@@ -27,7 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(c -> c.requestMatchers("/**").permitAll()
                 ).sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider);
-
+                // add filter before with jwtAuthinticationFilter, UsernamePasswordAuthinticationFilter.class
         return http.build();
     }
 }
